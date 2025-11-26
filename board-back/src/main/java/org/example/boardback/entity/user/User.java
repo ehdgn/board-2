@@ -22,7 +22,7 @@ import java.util.stream.Collectors;
                 @UniqueConstraint(name = "uk_users_username", columnNames = "username"),
                 @UniqueConstraint(name = "uk_users_email", columnNames = "email"),
                 @UniqueConstraint(name = "uk_users_nickname", columnNames = "nickname"),
-                @UniqueConstraint(name = "uk_users_provider_id", columnNames = {"provider", "provider_id"})
+                @UniqueConstraint(name = "uk_users_provider_provider_id", columnNames = {"provider", "provider_id"})
         }
 )
 @Getter
@@ -51,7 +51,7 @@ public class User extends BaseTimeEntity {
     // 프로필 이미지 파일 매핑
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "profile_file_id",
-        foreignKey = @ForeignKey(name = "fk_users_profile_file"))
+            foreignKey = @ForeignKey(name = "fk_users_profile_file"))
     private FileInfo profileFile;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
@@ -72,15 +72,16 @@ public class User extends BaseTimeEntity {
     private boolean emailVerified;
 
     @Builder
-    private User(String username,
-                 String password,
-                 String email,
-                 String nickname,
-                 Gender gender,
-                 FileInfo profileFile,
-                 AuthProvider provider,
-                 String providerId,
-                 boolean emailVerified
+    private User(
+            String username,
+            String password,
+            String email,
+            String nickname,
+            Gender gender,
+            FileInfo profileFile,
+            AuthProvider provider,
+            String providerId,
+            boolean emailVerified
     ) {
         this.username = username;
         this.password = password;
@@ -95,10 +96,10 @@ public class User extends BaseTimeEntity {
 
     // OAuth2용 생성/업데이트 메서드
     public static User createOauthUser(
-        AuthProvider provider,
-        String providerId,
-        String email,
-        String name
+            AuthProvider provider,
+            String providerId,
+            String email,
+            String name
     ) {
         return User.builder()
                 .username(provider.name() + "_" + providerId)
