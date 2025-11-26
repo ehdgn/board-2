@@ -8,7 +8,6 @@ function MainRouter() {
     <Routes>
       {/* 로그인 이후 게시판 라우터 */}
       <Route path="/board" element={<BoardListPage />} />
-
       
       <Route path="*" element={<BoardListPage />} />
     </Routes>

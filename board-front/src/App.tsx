@@ -1,9 +1,5 @@
 import { Link, Route, Routes } from "react-router-dom";
-import { SocialLoginButtons } from "./components/SocialLoginButtons";
-import LoginPage from "./pages/auth/LoginPage";
 import { useAuthStore } from "./stores/auth.store";
-import RegisterPage from "./pages/auth/RegisterPage";
-import OAuth2CallbackPage from "./pages/auth/OAuth2CallbackPage";
 import { GlobalStyle } from "./styles/global";
 import Layout from "./components/layout/Layout";
 import MainRouter from "./pages/MainRouter";

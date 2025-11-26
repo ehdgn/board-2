@@ -18,7 +18,7 @@ function Layout({ children }: { children: React.ReactNode }) {
 
   return (
     <div css={layoutStyle}>
-      <Header onToggleSidebar={handleToggleSidebar} />
+      <Header isOpen={sidebarOpen} onToggleSidebar={handleToggleSidebar} />
       <div css={contentStyle}>
         <Sidebar isOpen={sidebarOpen} onClose={handleCloseSidebar} />
         <main css={mainStyle}>{children}</main>
